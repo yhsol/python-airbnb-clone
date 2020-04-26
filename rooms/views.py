@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import DetailView, ListView
 from django_countries import countries
-
 from . import models
 
 
