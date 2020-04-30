@@ -24,7 +24,7 @@
                 {% for country in countries %}
                     <option 
                         value="{{country.code}}"
-                        {% if country.code == selected_country %}
+                        {% if country.code == s_country %}
                             selected
                         {% endif %}
                     >
@@ -38,14 +38,14 @@
             <select name="room_type" id="room_type">
                 <option 
                     value="0" 
-                    {% if selected_room_type == 0 %}
+                    {% if s_room_type == 0 %}
                     selected
                     {% endif %}
                 >Any kind</option>
                 {% for room_type in room_types %}
                     <option 
                         value="{{room_type.pk}}"
-                        {% if selected_room_type == room_type.pk %}
+                        {% if s_room_type == room_type.pk %}
                         selected
                         {% endif %}
                         >
@@ -83,9 +83,9 @@
              />
         </div>
         <div>
-            <label for="super_host">Superhost Only?</label>
-            <input type="checkbox" id="super_host" name="super_host"
-                {% if super_host %}checked{% endif %}
+            <label for="superhost">Superhost Only?</label>
+            <input type="checkbox" id="superhost" name="superhost"
+                {% if superhost %}checked{% endif %}
              />
         </div>
 
@@ -96,7 +96,7 @@
                     <li>
                         <label for="a_{{amenity.pk}}">{{amenity.name}}</label>
                         <input type="checkbox" id="a_{{amenity.pk}}" name="amenities" value="{{amenity.pk}}"
-                            {% if amenity.pk|slugify in selected_amenities %}
+                            {% if amenity.pk|slugify in s_amenities %}
                                 checked
                             {% endif %}
                         >
@@ -111,7 +111,7 @@
                     <li>
                         <label for="f_{{facility.pk}}">{{facility.name}}</label>
                         <input type="checkbox" id="f_{{facility.pk}}" name="facilities" value="{{facility.pk}}"
-                            {% if facility.pk|slugify in selected_facilities %}
+                            {% if facility.pk|slugify in s_facilities %}
                                 checked
                             {% endif %}
                         >
@@ -123,5 +123,13 @@
         <button>Search</button>
 
     </form>
+
+    <h3>Results</h3>
+
+    {% for room in rooms %}
+        <ul>
+            <li>{{room.name}}</li>
+        </ul>
+    {% endfor %}
 
 {% endblock content %}
