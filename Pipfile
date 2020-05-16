@@ -7,6 +7,13 @@ verify_ssl = true
 
 [packages]
 django = "==2.2.10"
+<<<<<<< HEAD
+=======
+pillow = "*"
+django-countries = "*"
+django-seed = "*"
+django-dotenv = "*"
+>>>>>>> 80304aad1eb95e55e99866b36155110656a20753
 
 [requires]
 python_version = "3.7"
