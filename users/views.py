@@ -43,11 +43,11 @@ class SignUpView(FormView):
 
 
 def complete_verification(request, key):
-    print("key", key)
+    print("key: ", key)
     try:
-        print("key: ", key)
         user = models.User.objects.get(email_secret=key)
         user.email_verified = True
+        user.email_secret = ""
         user.save()
         # todo: add success message
     except models.User.DoesNotExist:
