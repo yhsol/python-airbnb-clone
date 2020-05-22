@@ -45,7 +45,7 @@ class SignUpView(FormView):
 
 
 def complete_verification(request, key):
-    print("key: ", key)
+    # print("key: ", key)
     try:
         user = models.User.objects.get(email_secret=key)
         user.email_verified = True
