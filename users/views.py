@@ -106,6 +106,8 @@ def github_callback(request):
                     login(request, user)
                     return redirect(reverse("core:home"))
             else:
+                # email 이 pribate 일 경우가 있음.
+                # 그럴 경우 eamil 설정을 확인 요구 필요할 듯.
                 redirect(reverse("users:login"))
     else:
         return redirect(reverse("core:home"))
