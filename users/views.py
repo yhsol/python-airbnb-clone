@@ -63,7 +63,7 @@ def github_login(request):
     redirect_uri = "http://127.0.0.1:8000/users/login/github/callback"
 
     return redirect(
-        f"https://github.com/login/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&scope=user:email"
+        f"https://github.com/login/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&scope=read:user"
     )
 
 
