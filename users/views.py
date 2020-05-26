@@ -5,6 +5,7 @@ from django.views import View
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth import authenticate, login, logout
+from django.core.files.base import ContentFile
 from . import forms, models
 
 
@@ -115,6 +116,7 @@ def github_callback(request):
                             email_verified=True,
                         )
                         user.set_unusable_password()
+                        user.save()
                     login(request, user)
                     return redirect(reverse("core:home"))
                 else:
@@ -178,6 +180,12 @@ def kakao_callback(request):
                 email_verified=True,
             )
             user.set_unusable_password()
+            user.save()
+            if profile_image_url is not None:
+                photo_request = requests.get(profile_image_url)
+                user.avatar.save(
+                    f"{nickname}-avatar", ContentFile(photo_request.content)
+                )
         login(request, user)
         return redirect(reverse("core:home"))
     except KakaoException:
