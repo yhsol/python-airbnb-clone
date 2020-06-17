@@ -9,14 +9,19 @@
       {% block page_title %}{% endblock page_title %} | py-bnb
     </title>
   </head>
-  <body>
-    <header>
+  <body class="text-gray-800">
+    <header class="container max-w-full flex items-center justify-between px-5 h-20 border border-gray-400">
+      <div class="flex items-center">
+        <a class="mr-10" href="{% url "core:home" %}">py-bnb</a>
+        <div>
+          {% block search-bar %}
+          <form method="get" action="{% url "rooms:search" %}">
+            <input class="border px-2 py-2 rounded-sm" name="city" placeholder="Search by City" />
+          </form>
+          {% endblock search-bar %}
+        </div>
+      </div>
       {% include "partials/nav.html" %}      
-      {% block search-bar %}
-        <form method="get" action="{% url "rooms:search" %}">
-          <input name="city" placeholder="Search by City" />
-        </form>
-      {% endblock search-bar %}
     </header>
 
     {% block content %}{% endblock content %}
