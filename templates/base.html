@@ -10,13 +10,13 @@
     </title>
   </head>
   <body class="text-gray-800">
-    <header class="container max-w-full flex items-center justify-between px-5 h-20 border border-gray-400">
-      <div class="flex items-center">
+    <header class="container max-w-full flex items-center justify-between px-5 h-20 border-b border-gray-400">
+      <div class="flex items-center w-1/3">
         <a class="mr-10" href="{% url "core:home" %}">py-bnb</a>
         <div>
           {% block search-bar %}
-          <form method="get" action="{% url "rooms:search" %}">
-            <input class="border px-2 py-2 rounded-sm" name="city" placeholder="Search by City" />
+          <form method="get" action="{% url "rooms:search" %}" class="w-9/12">
+            <input class="search-box border font-medium placeholder-gray-600 px-5 py-3 rounded-sm shadow-md hover:shadow-lg focus:outline-none w-full" name="city" placeholder="Search by City" />
           </form>
           {% endblock search-bar %}
         </div>
